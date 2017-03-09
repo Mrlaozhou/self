@@ -5,6 +5,7 @@ class Base
 	public function __construct()
 	{
 		$this->init_db();
+		$this->init_func();
 	}
 
 	private function init_db ()
@@ -19,6 +20,10 @@ class Base
 		}
 	}
 
+	private function init_func()
+	{
+		require_once('/Config/functions.php');
+	}
 	public function init_header()
 	{
 		header("Access-Control-Allow-Origin:*");
