@@ -2,7 +2,7 @@
 
 return array(
 	'host' => 'localhost',
-	'user' =>'root',
+	'user' => 'root',
 	'pass' => 'laozhou',
 	'char' => 'utf8',
 	'db'   => DB_NAME,

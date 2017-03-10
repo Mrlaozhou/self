@@ -10,7 +10,7 @@
 //解析参数
 count( $url = parse_url( $_SERVER['REQUEST_URI'] ) ) > 1 ? parse_str( $url['query'],$config ) : 'No';
 //处理参数 去空格
-$config = array_map('trim',$config);
+$config = @array_map('trim',$config) or exit('路由错误！');
 
 defined('__MODULE__') or define('__MODULE__',ucwords($config['m']));
 defined('__ACTION__') or define('__ACTION__',isset($config['a']) ? $config['a'] : 'index');

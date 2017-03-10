@@ -3,9 +3,9 @@ class Doctor extends Base
 {
 	public function index()
 	{
-		var_dump(self::$_db);
+		$doctor = M('doctor');
+		$data = $doctor->All();
+		dump($data);
 	}
 
-	public function haha()
-	{}
 }
