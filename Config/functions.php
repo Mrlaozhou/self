@@ -36,3 +36,13 @@ function Error($msg)
 	exit;
 }
 
+function XSS($config)
+{
+	return is_array($config) ? array_map('XSS',$config) : htmlspecialchars($config);
+}
+
+function SQL($config)
+{
+	return is_array($config) ? array_map('SQL',$config) : addcslashes($config);
+}
+
