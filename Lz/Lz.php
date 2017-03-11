@@ -8,7 +8,9 @@
 
 /************路由解析************/
 //解析参数
-count( $url = parse_url( $_SERVER['REQUEST_URI'] ) ) > 1 ? parse_str( $url['query'],$config ) : 'No';
+
+$config = require_once('/Lz/url.php');
+
 //处理参数 去空格
 $config = @array_map('trim',$config) or exit('路由错误！');
 

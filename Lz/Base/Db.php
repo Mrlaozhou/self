@@ -23,7 +23,8 @@ class Db
 
 	private function InitLink()
 	{
-		$this->_link = @mysql_connect($this->_config['host'],"root","laozhou") or Error("数据库连接异常");
+		// $this->_link = @mysql_connect($this->_config['host'],"root","laozhou") or Error("数据库连接异常");
+		$this->_link = new PDO('mysql:host=localhost;dbname='.DB_NAME, "'".DB_ROOT."'", 'laozhou', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\'')); 
 	}
 	private function InitChoose()
 	{
@@ -38,24 +39,11 @@ class Db
 
 	public function query($sql)
 	{
-		$res =  mysql_query($sql);
-		return $res;
+		return $this->_link->query($sql);
 	}
 
-	public function All($sql)
+	public function exec($sql)
 	{
-		$result = array();
-		$res = $this->query($sql);
-		while( $item = mysql_fetch_assoc($res) )
-		{
-			 if($item)
-			 	$result[] = $item;
-		}
-		return $result;
-	}
-
-	public function One($sql)
-	{
-		return mysql_fetch_assoc($this->query($sql));
+		return $this->_link->exec($sql);
 	}
 }

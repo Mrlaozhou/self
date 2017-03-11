@@ -6,4 +6,7 @@ return array(
 	'pass' => 'laozhou',
 	'char' => 'utf8',
 	'db'   => DB_NAME,
+
+
+	'DIR'  => array('images','js','style','template','view'),
 	);

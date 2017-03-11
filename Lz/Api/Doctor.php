@@ -4,7 +4,8 @@ class Doctor extends Base
 	public function index()
 	{
 		$doctor = M('doctor');
-		dump($doctor);
+		$sql = "DESC zxznz_doctor";
+		dump($doctor->All($sql));
 	}
 
 }
