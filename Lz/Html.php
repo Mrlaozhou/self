@@ -18,6 +18,14 @@ defined('ACTION') or define('ACTION',isset($_GET['a']) ? trim($_GET['a']) : 'ind
 if( CREATE )
 	@require_once('/Lz/Base/InitMake.php');
 if( CONTROLLER )
-	@require_once(SRC_PATH.CONTROLLER.'.php');
+	find(SRC_PATH.CONTROLLER.'.php');
 if( ACTION )
-	@require_once(VIEW_PATH.ACTION.'.html');
+	find(VIEW_PATH.ACTION.'.html');
+
+function find($path)
+{
+	if( file_exists($path) )
+		require_once($path);
+	else
+		return FALSE;
+}
