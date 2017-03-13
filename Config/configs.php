@@ -8,5 +8,5 @@ return array(
 	'db'   => DB_NAME,
 
 
-	'DIR'  => array('images','js','style','template','view'),
+	'DIR'  => array('images','js','style','template','view','src'),
 	);
