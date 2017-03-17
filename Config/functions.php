@@ -46,10 +46,9 @@ function SQL($config)
 	return is_array($config) ? array_map('SQL',$config) : addcslashes($config);
 }
 
-function jsonTo($config)
+function echoJson($config)
 {
-	echo json_encode($config);
-	exit;
+	exit(json_encode($config));
 }
 
 
