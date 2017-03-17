@@ -51,3 +51,77 @@ function jsonTo($config)
 	echo json_encode($config);
 	exit;
 }
+
+
+
+
+/*******************************/
+function U($config,$type=1)
+{
+	if($type === 1)
+		echo "index.php?a=".$config;
+	else
+		echo "index.php?c=".$config;
+}
+/**
+ * [U description]
+ * @param [type]  $url      [路由]
+ * @param array   $config   [参数]
+ * @param boolean $isServer [显示域名]
+ */
+function U1($url,$config=array(),$isServer=FALSE)
+{
+	//是否带入域名
+	if( $isServer )
+		$script = $_SERVER['SERVER_NAME'].'index.php';
+	else
+		$script = '/index.php';
+	//特殊判断
+	if( $url == '/' )
+		return $script;
+	//分解参数
+	$url = explode('/',$url);
+
+	//判断是否传参  解析参数
+	if( empty($config) )
+	{
+		$route = null;
+	}
+	else
+	{
+		//转变参数格式
+		foreach($config as $k=>$v)
+		{
+			$route[] = $k.'='.$v;
+		}
+		$route = implode('&',$route);
+	}
+	if( count($url) == 2 )
+	{
+		//双层路由
+		if( $route )
+		{
+			//有传参
+			return $script.'?c='$url[0].'&'.'a='.$url[1].'&'.$route;
+		}
+		else
+		{
+			//无传参
+			return $script.'?c='$url[0].'&'.'a='.$url[1];
+		}
+	}
+	else
+	{
+		//单路由显示
+		if( $route )
+		{
+			//有传参
+			return $script.'?c='.CONTROLLER.'&'.'a='.$url[0].'&'.$route;
+		}
+		else
+		{
+			//无传参
+			return $script.'?c='.CONTROLLER.'&'.'a='.$url[0];
+		}
+	}
+}
