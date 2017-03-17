@@ -124,3 +124,16 @@ function U1($url,$config=array(),$isServer=FALSE)
 		}
 	}
 }
+
+function G($config=null)
+{
+	if( $config )
+		return $_GET["{$config}"];
+	return $_GET;
+}
+function P($config)
+{
+	if( $config )
+		return $_POST["{$config}"];
+	return $_POST;
+}
