@@ -7,6 +7,6 @@
 header("Content-Type:text/html;Charset=utf-8");
 
 //是否自动创建
-define('CREATE',TRUE);
+define('CREATE',FALSE);
 
 require_once('/Lz/Html.php');
