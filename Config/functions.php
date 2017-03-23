@@ -101,12 +101,12 @@ function U1($url,$config=array(),$isServer=FALSE)
 		if( $route )
 		{
 			//有传参
-			return $script.'?c='$url[0].'&'.'a='.$url[1].'&'.$route;
+			return $script.'?c='.$url[0].'&'.'a='.$url[1].'&'.$route;
 		}
 		else
 		{
 			//无传参
-			return $script.'?c='$url[0].'&'.'a='.$url[1];
+			return $script.'?c='.$url[0].'&'.'a='.$url[1];
 		}
 	}
 	else
