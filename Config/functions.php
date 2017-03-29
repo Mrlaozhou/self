@@ -51,7 +51,28 @@ function echoJson($config)
 	exit(json_encode($config));
 }
 
+function Post($curlPost,$url)
+{
+		$curl = curl_init();
+		curl_setopt($curl, CURLOPT_URL, $url);
+		curl_setopt($curl, CURLOPT_HEADER, false);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($curl, CURLOPT_NOBODY, true);
+		curl_setopt($curl, CURLOPT_POST, true);
+		curl_setopt($curl, CURLOPT_POSTFIELDS, $curlPost);
+		$return_str = curl_exec($curl);
+		curl_close($curl);
+		return $return_str;
+}
 
+function Unsign($param)
+{
+	$pattern = '/((?=[\x21-\x7e]+)[^A-Za-z0-9])/';
+	$result = preg_match($pattern,$param);
+	if( $result === 0 )
+		return TRUE;
+	return FALSE;
+}
 
 
 /*******************************/
@@ -136,4 +157,21 @@ function P($config)
 	if( $config )
 		return $_POST["{$config}"];
 	return $_POST;
+}
+function A($route)
+{
+	return 'api.php?u='.$route;
+}
+
+function S($k,$v=FALSE,$t=null)
+{
+	//取值
+	if( $v === FALSE )
+		return $_SESSION[$k];
+	//毁值
+	if( $v === null )
+		unset($_SESSION[$k]);
+	//设值
+	$_SESSION[trim($k)] = trim($v);
+	return TRUE;
 }
