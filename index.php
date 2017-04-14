@@ -16,9 +16,9 @@ define('CREATE',TRUE);
 
 
 /*admin*///
-defined('DB_NAME') or define('DB_NAME','zxznz');
-defined('DB_ROOT') or define('DB_ROOT','root');
-defined('DB_PASS') or define('DB_PASS','laozhou');
+defined('DB_NAME') or define('DB_NAME','');
+defined('DB_ROOT') or define('DB_ROOT','');
+defined('DB_PASS') or define('DB_PASS','');
 defined('ALLOW_HOST') or define('ALLOW_HOST','*');
 
 // print_r($_SERVER['PATH_INFO']);
