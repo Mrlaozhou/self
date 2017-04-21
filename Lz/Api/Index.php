@@ -2,8 +2,8 @@
 
 class Index extends Base
 {
-	public function index()
+	public function test()
 	{
-		eval('echo nihao ');
+		echo ord('a');
 	}
 }

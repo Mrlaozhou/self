@@ -217,6 +217,15 @@ function Vendor($plug=null)
 	return FALSE;
 }
 
+function dorpExt( $param = null )
+{
+	if( $param === null )
+		return FALSE;
+	return substr( $param ,strripos( $param ,'.' ) );
+}
+
+
+
 /************************/
 function is_weixin()
 {

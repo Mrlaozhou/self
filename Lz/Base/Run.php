@@ -19,6 +19,7 @@ class Run
 
 	static function init_map ()
 	{
+		/*
 		$res1 = opendir(ROOT_PATH); 
 		while( $dir1 = readdir($res1) )
 		{
@@ -36,8 +37,29 @@ class Run
 				}
 			}
 		}
+		*/
+	
+		#2017.04.21 change to 
+		$ROOT = getcwd();
+		$ALLOW = array('api','base');
+		$ALLOW = array_map('ucwords',$ALLOW);
+		//遍历文件夹
+		foreach( $ALLOW  as $v )
+		{
+			chdir(ROOT_PATH.trim($v));
+			$items = glob('*.php');
+			foreach( $items as $index => $item )
+			{
+				$items[$index] = substr( $item , 0 ,strripos( $item ,'.' ) );
+			}
+			//去除后缀
+			self::$_map[$v] = $items;
+		}
+		//注：返回根目录
+		chdir($ROOT);
 		// echo '<pre>';
 		// print_r(self::$_map);
+		// print_r($ALLOW);
 	}
 
 	static function __autoload($className) 
@@ -58,4 +80,5 @@ class Run
 		$object = new $module();
 		$object->$action();
 	}
+
 }
